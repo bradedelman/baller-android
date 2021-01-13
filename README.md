@@ -96,7 +96,7 @@ It's really easy to get up and running with Baller in any Kotlin Application.  L
         val contents = URL("https://www.cleverfocus.com/baller/sample.js").readText()
         runOnUiThread {
             val ballerView = BallerView(this, contents, 320); // width is virtualized
-            addContentView(ballerView);
+            setContentView(ballerView);
         }
     }).start()
 	
