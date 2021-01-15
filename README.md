@@ -63,7 +63,7 @@ It's really easy to get up and running with Baller in any Kotlin Application.  L
 	- Now you need to "Sync Gradle" - it will download, etc. 
 	- Baller is now in your Project
 	
-3. Add Permission to Use the Internet
+3. Add Permission to Use the Internet and to use a local http server (for dev)
 
 	```
 		in AndroidManifest.xml
@@ -71,8 +71,13 @@ It's really easy to get up and running with Baller in any Kotlin Application.  L
 		add on line 4 (right before the <application	
 		
 		<uses-permission android:name="android.permission.INTERNET" />
+		
+		also add this attribuet to the application tag:
+		
+		android:usesCleartextTraffic="true"
 	
 	```
+		
 
 4. Add a Sample Baller View to your App
 	- Open MainActivity
