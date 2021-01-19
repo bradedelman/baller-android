@@ -9,6 +9,7 @@ import android.graphics.drawable.shapes.RectShape
 import android.util.TypedValue
 import android.view.View
 import android.widget.EditText
+import android.widget.TextView
 import com.affirm.baller.platform.Native
 
 class NativeField constructor(context: Native) : NativeView(context) {
@@ -46,10 +47,15 @@ class NativeField constructor(context: Native) : NativeView(context) {
         return v.text.toString()
     }
 
-    fun font(url: String, size: Int) {
+    fun fontFace(url: String, bSystem: Boolean) {
         var v:EditText = this._e as EditText;
-        v.setTextSize(TypedValue.COMPLEX_UNIT_PX, size.toFloat());
-        v.setTypeface(_native._fonts.getFont(url));
+        v.setTypeface(_native._fonts.getFont(url, bSystem));
     }
+
+    fun fontSize(size: Int) {
+        var v:EditText = this._e as EditText;
+        v.setTextSize(TypedValue.COMPLEX_UNIT_PX, size.toFloat() / 1.07f); // TODO: revisit "schluff factor"
+    }
+
 }
 

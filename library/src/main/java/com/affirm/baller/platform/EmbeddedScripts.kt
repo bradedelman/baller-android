@@ -15,8 +15,8 @@ class EmbeddedScripts {
         // host platform to inject func for...
         // Baller.getNative(contextId)
         var gContexts = {};
-        function create(nativeId, jsTypeId) {
-            return gContexts[nativeId].create(jsTypeId);
+        function create(nativeId, jsTypeId, parentId) {
+            return gContexts[nativeId].create(jsTypeId, parentId);
         }
         Baller.create = create;
         function call(nativeId, id, method) {

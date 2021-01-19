@@ -25,10 +25,14 @@ class NativeLabel constructor(context: Native) : NativeView(context) {
         v.setText(text);
     }
 
-    fun font(url: String, size: Int) {
+    fun fontFace(url: String, bSystem: Boolean) {
+        var v:TextView = this._e as TextView;
+        v.setTypeface(_native._fonts.getFont(url, bSystem));
+    }
+
+    fun fontSize(size: Int) {
         var v:TextView = this._e as TextView;
         v.setTextSize(TypedValue.COMPLEX_UNIT_PX, size.toFloat() / 1.07f); // TODO: revisit "schluff factor"
-        v.setTypeface(_native._fonts.getFont(url));
     }
 }
 

@@ -36,7 +36,7 @@ class NativeList constructor(context: Native) : NativeView(context) {
     inner class MyViewAdapter : Adapter<MyViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-            var nv: NativeView = _native.jsCreate(_viewTypeId)!!;
+            var nv: NativeView = _native.jsCreate(_viewTypeId, _id)!!;
 
             // get Android view
             var v: View = nv._e!!;

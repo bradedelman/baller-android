@@ -9,6 +9,7 @@ import android.graphics.drawable.shapes.RectShape
 import android.util.TypedValue
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import com.affirm.baller.platform.Native
 
@@ -55,10 +56,15 @@ class NativeButton constructor(context: Native) : NativeView(context) {
         v.setText(text);
     }
 
-    fun font(url: String, size: Int) {
-        var v:TextView = this._e as Button;
-        v.setTextSize(TypedValue.COMPLEX_UNIT_PX, size.toFloat() / 1.07f); // TODO: revisit "schluff factor"
-        v.setTypeface(_native._fonts.getFont(url));
+    fun fontFace(url: String, bSystem: Boolean) {
+        var v:Button = this._e as Button;
+        v.setTypeface(_native._fonts.getFont(url, bSystem));
     }
+
+    fun fontSize(size: Int) {
+        var v:Button = this._e as Button;
+        v.setTextSize(TypedValue.COMPLEX_UNIT_PX, size.toFloat() / 1.07f); // TODO: revisit "schluff factor"
+    }
+
 }
 

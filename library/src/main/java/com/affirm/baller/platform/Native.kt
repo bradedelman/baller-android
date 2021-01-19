@@ -38,9 +38,9 @@ class Native constructor(
         _services.put(name, service);
     }
 
-    fun jsCreate(jsTypeId: String): NativeView?
+    fun jsCreate(jsTypeId: String, parentId: String): NativeView?
     {
-        var s: String = "Baller.create('" + _nativeId + "', '" + jsTypeId + "')";
+        var s: String = "Baller.create('" + _nativeId + "', '" + jsTypeId + "', '" +  parentId + "')";
         var viewId: String =_javascriptEngine.evaluate(s) as String
         var nv: NativeView? = _views.get(viewId);
         return nv;

@@ -43,7 +43,7 @@ class NativeHost constructor(native: Native) {
 
     fun finishInit(nativeType: String)
     {
-        var nv = _native.jsCreate(nativeType);
+        var nv = _native.jsCreate(nativeType, "");
         var view = nv?._e;
         _native._hostView._nv = nv;
         _native._hostView.addView(view!!);

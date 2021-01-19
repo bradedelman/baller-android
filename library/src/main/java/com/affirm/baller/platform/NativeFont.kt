@@ -10,12 +10,16 @@ class NativeFont constructor(
     var _context = context;
     var _fonts: HashMap<String, Typeface> = HashMap()
 
-    fun getFont(url: String) : Typeface?
+    fun getFont(url: String, bSystem: Boolean) : Typeface?
     {
         var typeface:Typeface? = _fonts.get(url);
 
         if (typeface == null) {
-            typeface = Typeface.createFromAsset(_context.assets, "dist/" + url);
+            if (bSystem) {
+                typeface = Typeface.createFromAsset(_context.assets, "baller-assets/" + url);
+            } else {
+                typeface = Typeface.createFromAsset(_context.assets, "dist/" + url);
+            }
             _fonts.put(url, typeface);
         }
 
