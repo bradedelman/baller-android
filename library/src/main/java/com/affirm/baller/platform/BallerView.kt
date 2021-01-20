@@ -10,9 +10,14 @@ import com.affirm.baller.service.NativeHttp
 import com.affirm.baller.service.NativeStore
 import com.affirm.baller.utils.*
 import com.affirm.baller.view.NativeView
+import com.github.kittinunf.fuel.httpGet
+import com.github.kittinunf.fuel.httpPost
+import com.github.kittinunf.result.Result
+import org.json.JSONObject
 import java.lang.Exception
+import java.net.URL
 
-open class BallerView constructor(context: Context, scriptContent: String, scaledWidth: Int) : LayoutView(context) {
+open class BallerView constructor(context: Context, scaledWidth: Int) : LayoutView(context) {
 
     interface BallerViewInterface {
         fun  onEvent(name: String, value: String);
@@ -28,7 +33,10 @@ open class BallerView constructor(context: Context, scriptContent: String, scale
             LinearLayout.LayoutParams.WRAP_CONTENT
         );
         layoutParams = params
+    }
 
+    fun load(scriptContent: String)
+    {
         var native: Native = Native(context, this);
         var script = DefinePathFromMainViewScriptHack.getPath(scriptContent);
 
@@ -54,4 +62,17 @@ open class BallerView constructor(context: Context, scriptContent: String, scale
         native._javascriptEngine.evaluate("Baller.init('" + script + "', '" + native._nativeId + "')");
     }
 
+    fun loadUrl(url: String) {
+        val httpAsync = url.httpGet();
+
+        var request = httpAsync.responseString { request, response, result ->
+            when (result) {
+                is Result.Success -> {
+                    val data = result.get()
+                    load(data);
+                }
+            }
+        }
+        request.join()
+    }
 }
