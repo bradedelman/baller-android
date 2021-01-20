@@ -1,4 +1,4 @@
-# Baller for Android (Alpha 0.0.2)
+# Baller for Android (Alpha 0.0.3)
 
 Baller is a cross-platform View Framework.  It's not an Application framework, it's just a way to implement a view e.g. a "User Interface Screen".  
 
@@ -57,7 +57,7 @@ It's really easy to get up and running with Baller in any Kotlin Application.  L
 		
 	line 36: (the hex number is a git revsion)
 		
-	    implementation 'com.github.bradedelman:baller-android:0.0.2'
+	    implementation 'com.github.bradedelman:baller-android:0.0.3'
 	```
 
 	- Now you need to "Sync Gradle" - it will download, etc. 
@@ -81,11 +81,10 @@ It's really easy to get up and running with Baller in any Kotlin Application.  L
 
 4. Add a Sample Baller View to your App
 	- Open MainActivity
-	- add 2 imports at the top
+	- add an import at the top
 
 	````
 	import com.affirm.baller.platform.BallerView
-	import java.net.URL
 	````
 	
 	- delete this line:
@@ -97,14 +96,12 @@ It's really easy to get up and running with Baller in any Kotlin Application.  L
 	- and put this there instead:
 	
 	```
-    Thread(Runnable {
-        val contents = URL("https://www.cleverfocus.com/baller/sample.js").readText()
-        runOnUiThread {
-            val ballerView = BallerView(this, contents, 320); // width is virtualized
-            setContentView(ballerView);
-        }
-    }).start()
-	
+    val ballerView = BallerView(this, 320); // width is virtualized
+    setContentView(ballerView);
+
+    // load script (loadUrl is a convienence, but load can be used
+    // for a script that comes from anywhere)
+    ballerView.loadUrl("https://www.cleverfocus.com/baller/sample.js")	
 	```
 
 ### That's it!  Run and you'll see the sample view with a scrolling list of 1,000 numbers!   More coming soon on how to create your own views.
