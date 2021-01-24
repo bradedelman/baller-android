@@ -66,13 +66,13 @@ It's really easy to get up and running with Baller in any Kotlin Application.  L
 3. Add Permission to Use the Internet and to use a local http server (for dev)
 
 	```
-		in AndroidManifest.xml
+	in AndroidManifest.xml
 	
-		add on line 4 (right before the <application	
-		
+	add on line 4 (right before the <application	
+	
 		<uses-permission android:name="android.permission.INTERNET" />
 		
-		also add this attribuet to the application tag:
+	also add this attribuet to the application tag:
 		
 		android:usesCleartextTraffic="true"
 	
