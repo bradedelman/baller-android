@@ -1,4 +1,4 @@
-# Baller for Android (Alpha 0.0.3)
+# Baller for Android (Alpha 0.0.4)
 
 Baller is a cross-platform View Framework.  It's not an Application framework, it's just a way to implement a view e.g. a "User Interface Screen".  
 
@@ -57,7 +57,7 @@ It's really easy to get up and running with Baller in any Kotlin Application.  L
 		
 	line 36: (the hex number is a git revsion)
 		
-	    implementation 'com.github.bradedelman:baller-android:0.0.3'
+	    implementation 'com.github.bradedelman:baller-android:0.0.4'
 	```
 
 	- Now you need to "Sync Gradle" - it will download, etc. 
